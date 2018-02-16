@@ -10,14 +10,19 @@ class Pages extends Controller {
     public function index()
     {
         $data = [
-            'title' => 'Welcome!'];
+            'title' => 'theReviewer',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum.'
+        ];
+
         $this->view('pages/index',$data);
     }
 
     public function about()
     {
         $data = [
-            'title' => 'About Us!'];
+            'title' => 'About Us!',
+            'description' => 'Integer pretium mauris nisi, id congue ipsum condimentum vitae. Fusce.'
+        ];
         $this->view('pages/about',$data);
     }
 }
