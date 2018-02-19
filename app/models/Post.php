@@ -38,11 +38,37 @@ class Post {
         }
     }
 
+    public function updatePost($data)
+    {
+        $this->pdo->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
+        $this->pdo->bind(':id', $data['id']);
+        $this->pdo->bind(':title', $data['title']);
+        $this->pdo->bind(':body', $data['body']);
+
+        if ($this->pdo->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getPostById($id)
     {
         $this->pdo->query('SELECT * FROM `posts` WHERE `id` = :id');
         $this->pdo->bind(':id', $id);
 
         return $row = $this->pdo->single();
+    }
+
+    public function deletePost($id)
+    {
+        $this->pdo->query('DELETE FROM posts WHERE id = :id');
+        $this->pdo->bind(':id', $id);
+
+        if ($this->pdo->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
