@@ -50,4 +50,13 @@ class User {
             return false;
         }
     }
+
+    public function getUserById($id)
+    {
+        $this->pdo->query('SELECT * FROM `users` WHERE `id` = :id');
+        $this->pdo->bind(':id', $id);
+
+        return $row = $this->pdo->single();
+
+    }
 }

@@ -1,11 +1,12 @@
 <?php require APPROOT . '/views/includes/header.php';?>
+    <?php flash('post_message')?>
     <div class="row mb-3">
         <div class="col-md-6">
             <h1>Reviews</h1>
         </div>
         <div class="col-md-6">
             <a href="<?=URLROOT?>/posts/add" class="btn btn-primary pull-right">
-                <i class="fa fa-pencil"></i>Add a review
+                <i class="fa fa-pencil"></i>Write a review
             </a>
         </div>
     </div>

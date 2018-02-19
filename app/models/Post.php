@@ -23,4 +23,26 @@ class Post {
 
         return $results = $this->pdo->resultSet();
     }
+
+    public function addPost($data)
+    {
+        $this->pdo->query('INSERT INTO `posts` (title, user_id, body) VALUES (:title, :user_id, :body)');
+        $this->pdo->bind(':title', $data['title']);
+        $this->pdo->bind(':user_id', $data['user_id']);
+        $this->pdo->bind(':body', $data['body']);
+
+        if ($this->pdo->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getPostById($id)
+    {
+        $this->pdo->query('SELECT * FROM `posts` WHERE `id` = :id');
+        $this->pdo->bind(':id', $id);
+
+        return $row = $this->pdo->single();
+    }
 }
