@@ -9,6 +9,10 @@ class Pages extends Controller {
 
     public function index()
     {
+        if (isLoggedIn()) {
+            redirect('posts');
+        }
+
         $data = [
             'title' => 'theReviewer',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum.'
