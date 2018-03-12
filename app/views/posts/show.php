@@ -6,7 +6,9 @@
     Written by <?=$data['user']->name?> on <?=$data['post']->created_at?>
 </div>
 <p><?=$data['post']->body?></p>
-
+<div>
+    <img src="<?=URLROOT?>/public/<?=$data['post']->image?>" class="img-responsive">
+</div>
 <?php if ($data['post']->user_id === $_SESSION['user_id']) : ?>
     <hr>
     <a href="<?=URLROOT?>/posts/edit/<?=$data['post']->id?>" class="btn btn-dark">Edit</a>

@@ -26,10 +26,15 @@ class Post {
 
     public function addPost($data)
     {
-        $this->pdo->query('INSERT INTO `posts` (title, user_id, body) VALUES (:title, :user_id, :body)');
+        $this->pdo->query('INSERT INTO `posts` (title, artist_name, album_name, album_year, album_rating, user_id, body, image) VALUES (:title, :artist_name, :album_name, :album_year, :album_rating, :user_id, :body, :image)');
         $this->pdo->bind(':title', $data['title']);
+        $this->pdo->bind(':artist_name', $data['artist_name']);
+        $this->pdo->bind(':album_name', $data['album_name']);
+        $this->pdo->bind(':album_year', $data['album_year']);
+        $this->pdo->bind(':album_rating', $data['album_rating']);
         $this->pdo->bind(':user_id', $data['user_id']);
         $this->pdo->bind(':body', $data['body']);
+        $this->pdo->bind(':image', $data['image']);
 
         if ($this->pdo->execute()) {
             return true;
@@ -40,10 +45,11 @@ class Post {
 
     public function updatePost($data)
     {
-        $this->pdo->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
+        $this->pdo->query('UPDATE posts SET title = :title, body = :body, image = :image WHERE id = :id');
         $this->pdo->bind(':id', $data['id']);
         $this->pdo->bind(':title', $data['title']);
         $this->pdo->bind(':body', $data['body']);
+        $this->pdo->bind(':image', $data['image']);
 
         if ($this->pdo->execute()) {
             return true;
