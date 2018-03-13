@@ -89,7 +89,7 @@
                             <option>1962</option>
                             <option>1961</option>
                         </select>
-                        <span class="span invalid-feedback"><?=$data['album_year']?></span>
+                        <span class="span invalid-feedback"><?=$data['album_year_err']?></span>
                     </div>
                 </div>
 
@@ -109,7 +109,7 @@
                             <option>4.5</option>
                             <option>5</option>
                         </select>
-                        <span class="span invalid-feedback"><?=$data['album_rating']?></span>
+                        <span class="span invalid-feedback"><?=$data['album_rating_err']?></span>
                     </div>
                 </div>
 
@@ -120,8 +120,12 @@
                 <textarea name="body" class="form-control form-control-lg <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>"><?=$data['body']?></textarea>
                 <span class="span invalid-feedback"><?=$data['body_err']?></span>
             </div>
-            Album image <br>
-            <input type="file" name="file" id="file" class="btn btn-info"><br><br>
+            <div class="form-group">
+                Album cover <br>
+                <input type="file" name="file" id="file" class="btn btn-info mt-3">
+                <p style="color: red"><?=$data['album_image_err']?><p>
+            </div>
+            <br>
             <input type="submit" value="Submit" class="btn btn-success btn-lg">
         </form>
     </div>
